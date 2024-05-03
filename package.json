@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "type": "module",
   "description": "",
-  "main": "server.ts",
+  "main": "app.ts",
   "scripts": {
     "start": "nodemon --env-file='.env' --watch src --exec node --no-warnings=ExperimentalWarning --loader ts-node/esm src/app.ts",
     "seed": "node --loader ts-node/esm src/db/seeds/seeds.ts",
