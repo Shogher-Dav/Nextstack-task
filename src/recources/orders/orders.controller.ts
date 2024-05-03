@@ -1,5 +1,4 @@
 import { Request, Response, NextFunction } from "express";
-import mongoose from "mongoose";
 import BadRequestError from "../../middlewares/BadRequestError";
 import ProductsService from "../products/products.service";
 import IProduct from "../products/products.types";
@@ -32,7 +31,7 @@ export default class OrdersController {
   public async create(req: Request, res: Response, next: NextFunction) {
     const isValid = await this.isValidOrder(req, res, next);
     if (isValid) {
-      await this.ordersService.create(req.body);
+      await this.ordersService.create(req.body as IOrder);
       this.updateProductAfterOrderCreated(req.body);
       res.send("Succesfully created");
     }

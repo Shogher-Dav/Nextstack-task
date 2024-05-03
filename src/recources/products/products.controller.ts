@@ -29,6 +29,7 @@ export default class ProductsController {
     const isValid = this.isValidProduct(req, res, next);
     if (isValid) {
       await this.productsService.create(req.body);
+      res.send("Succesfully created");
     }
   }
 

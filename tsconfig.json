@@ -16,7 +16,8 @@
     "skipLibCheck": true,
     "allowImportingTsExtensions": true,
     "noEmit": true,
-    "moduleResolution": "Node"
+    "moduleResolution": "Node",
+    "experimentalDecorators": true
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules"],
