@@ -14,7 +14,7 @@ Before running application add .env file with this variables
 
 Run service app in the development mode.
 
-### `npm run start`
+### `docker-compose up`
 
 Run seeds using following command
 
