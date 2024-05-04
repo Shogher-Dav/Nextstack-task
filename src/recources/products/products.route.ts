@@ -1,5 +1,9 @@
 import { Router } from "express";
 import { authMiddleware } from "../../middlewares/auth.middleware";
+import {
+  createProductValidator,
+  updateProductValidator,
+} from "../../middlewares/validators/product.validator.middleware";
 import ProductsController from "./products.controller";
 
 const router = Router();
@@ -13,12 +17,12 @@ router.get("/:id", authMiddleware, async (req, res, next) => {
   return await productsController.get(req, res, next);
 });
 
-router.post("/", authMiddleware, async (req, res, next) => {
-  return await productsController.create(req, res, next);
+router.post("/", authMiddleware, createProductValidator, async (req, res) => {
+  return await productsController.create(req, res);
 });
 
-router.put("/:id", authMiddleware, async (req, res, next) => {
-  return await productsController.update(req, res, next);
+router.put("/:id", authMiddleware, updateProductValidator, async (req, res) => {
+  return await productsController.update(req, res);
 });
 
 router.delete("/:id", authMiddleware, async (req, res, next) => {

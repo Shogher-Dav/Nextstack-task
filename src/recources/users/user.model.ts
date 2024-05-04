@@ -1,5 +1,5 @@
-import mongoose, { Schema } from 'mongoose';
-import IUser from './user.types';
+import mongoose, { Schema } from "mongoose";
+import IUser from "./user.types";
 
 export interface UserDocument extends IUser, mongoose.Document {}
 
@@ -15,4 +15,4 @@ const UserSchema = new Schema({
   },
 });
 
-export default mongoose.model<UserDocument>('User', UserSchema);
+export default mongoose.model<UserDocument>("User", UserSchema);

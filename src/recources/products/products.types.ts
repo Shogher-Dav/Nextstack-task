@@ -1,6 +1,6 @@
 export default interface IProduct {
   name: string;
-  description: string | null | undefined;
+  description?: string;
   price: number;
   stock: number;
 }

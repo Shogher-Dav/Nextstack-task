@@ -25,20 +25,14 @@ export default class ProductsController {
     res.json(await this.productsService.get(req.params.id));
   }
 
-  async create(req: Request, res: Response, next: NextFunction) {
-    const isValid = this.isValidProduct(req, res, next);
-    if (isValid) {
-      await this.productsService.create(req.body);
-      res.send("Succesfully created");
-    }
+  async create(req: Request, res: Response) {
+    await this.productsService.create(req.body);
+    res.send("Succesfully created");
   }
 
-  async update(req: Request, res: Response, next: NextFunction) {
-    const isValid = this.isValidProduct(req, res, next);
-    if (isValid) {
-      await this.productsService.update(req.params.id, req.body);
-      res.send("Succesfully updated");
-    }
+  async update(req: Request, res: Response) {
+    await this.productsService.update(req.params.id, req.body);
+    res.send("Succesfully updated");
   }
 
   async remove(req: Request, res: Response, next: NextFunction) {
@@ -54,36 +48,5 @@ export default class ProductsController {
 
     await this.productsService.remove(req.params.id);
     res.send("Succesfully deleted");
-  }
-
-  isValidProduct(req: Request, res: Response, next: NextFunction) {
-    if (!req.body.name) {
-      return next(
-        new BadRequestError({
-          code: 400,
-          message: "Name is required!",
-          logging: true,
-        }),
-      );
-    }
-    if (!req.body.price) {
-      return next(
-        new BadRequestError({
-          code: 400,
-          message: "Price is required!",
-          logging: true,
-        }),
-      );
-    }
-    if (!req.body.stock) {
-      return next(
-        new BadRequestError({
-          code: 400,
-          message: "Stock is required!",
-          logging: true,
-        }),
-      );
-    }
-    return true;
   }
 }

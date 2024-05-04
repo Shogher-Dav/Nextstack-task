@@ -1,5 +1,5 @@
-import mongoose from 'mongoose';
-import IProduct from './products.types';
+import mongoose from "mongoose";
+import IProduct from "./products.types";
 
 export interface ProductDocument extends IProduct, mongoose.Document {}
 
@@ -22,4 +22,4 @@ const ProductsSchema = new mongoose.Schema({
   },
 });
 
-export default mongoose.model<ProductDocument>('Products', ProductsSchema);
+export default mongoose.model<ProductDocument>("Products", ProductsSchema);
